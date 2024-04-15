@@ -1,0 +1,72 @@
+import dash
+from dash import html
+import dash_bootstrap_components as dbc
+
+
+from fronted.encabezado.logo import logo, nombre
+from fronted.foto.fot import picture
+from fronted.graficas.graf import grafica
+
+app = dash.Dash(__name__, external_stylesheets= [dbc.themes.BOOTSTRAP])
+
+app.layout = dbc.Container([
+    dbc.Row([
+        dbc.Col(logo, md= 2, style = { 'background-color': 'blue'}),
+        dbc.Col(nombre, md= 10, style = { 'background-color': 'purple'}) 
+        ]),
+
+   html.Hr(),
+   html.H2(picture),     
+   html.Br(),
+   html.Br(),
+   html.Br(),
+   html.Br(),
+   html.Br(),
+   html.Hr(),
+   dbc.Row([
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'red'}),
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'blue'}),
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'yellow'}),
+       html.Br(),
+       html.Br(),
+       html.Br(),
+       html.Br(),
+       html.Hr(),
+   ]),
+   html.Hr(),
+      dbc.Row([
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'yellow'}),
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'red'}),
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'blue'}),
+       html.Br(),
+       html.Br(),
+       html.Br(),
+       html.Br(),
+       html.Hr(),
+   ]),
+   html.Hr(),
+      dbc.Row([
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'red'}),
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'blue'}),
+       dbc.Col(grafica, md = 4, style = {'background-color' : 'yellow'}),
+       html.Br(),
+       html.Br(),
+       html.Br(),
+       html.Br(),
+       html.Hr(),
+   ]),
+html.Hr(),
+      dbc.Row([
+       dbc.Col('hora', md = 3, style = {'background-color' : 'brown'}),
+       dbc.Col('datos de contacto y autor', md = 9, style = {'background-color' : 'purple'}),
+       html.Br(),
+       html.Br(),
+       html.Br(),
+       html.Br(),
+       html.Hr(),
+   ]),
+   
+])
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
