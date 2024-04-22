@@ -6,7 +6,8 @@ import dash_bootstrap_components as dbc
 from fronted.encabezado.logo import logo, nombre
 from fronted.foto.fot import picture
 from fronted.graficas.graf import grafica
-from fronted.INPUT.laminadeagua import lamagua
+from fronted.INPUT.basetrapezoide import base
+from fronted.INPUT.caudal import caudalt
 
 app = dash.Dash(__name__, external_stylesheets= [dbc.themes.BOOTSTRAP])
 
@@ -25,12 +26,22 @@ app.layout = dbc.Container([
    html.Br(),
    html.Hr(),
    html.H1(dbc.Container([   
-    html.H3("Introduzca la altura de la lámina de agua: "),
-    dcc.Input(id='altura-input', type='number', value=0),
+    html.H3("Introduzca la base del canal: "),
+    dcc.Input(id='base-input', type='number', value=0),
     html.Br(),
     html.Br(),
+    html.H3("Introduzca el caudal del fluido: "),
+    dcc.Input(id='caudal-input', type='number', value=0),
+    html.Br(),
+    html.Br(),
+    html.H3("Introduzca la la profundidad de la lamina de agua: "),
+    dcc.Input(id='profundidad-input', type='number', value=0),
+    html.Br(), 
     html.Hr(),
-    html.Div(id='output-container')
+    html.Div(id='output-container'),
+    html.Div(id='output-container-caudal'),
+    html.Div(id='output-container-profundidad'),
+    html.Br(),
 ])
    ),
    
@@ -83,10 +94,31 @@ html.Hr(),
  
 @app.callback(
     Output('output-container', 'children'),
-    [Input('altura-input', 'value')]
+    [Input('base-input', 'value')]
 )
 def update_output(value):
-    return html.H3(f"La altura ingresada es: {value} m")
+    return html.H3(f"La base ingresada es: {value} m")
+
+@app.callback(
+    Output('output-container-caudal', 'children'),
+    [Input('caudal-input', 'value')]
+)
+def update_output(value):
+    return html.H3(f"El caudal es: {value} m3/s")
+  
+@app.callback(
+    Output('output-container-profundidad', 'children'),
+    [Input('profundidad-input', 'value')]
+)
+def update_output(value):
+    return html.H3(f"El profundidad de la lamina de agua es: {value} m")
+
+
+
+
+
+
+
 
 
 if __name__ == '__main__':
