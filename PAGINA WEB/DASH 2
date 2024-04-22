@@ -1,11 +1,12 @@
 import dash
-from dash import html
+from dash import html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc
 
 
 from fronted.encabezado.logo import logo, nombre
 from fronted.foto.fot import picture
 from fronted.graficas.graf import grafica
+from fronted.INPUT.laminadeagua import lamagua
 
 app = dash.Dash(__name__, external_stylesheets= [dbc.themes.BOOTSTRAP])
 
@@ -22,6 +23,17 @@ app.layout = dbc.Container([
    html.Br(),
    html.Br(),
    html.Br(),
+   html.Hr(),
+   html.H1(dbc.Container([   
+    html.H3("Introduzca la altura de la lámina de agua: "),
+    dcc.Input(id='altura-input', type='number', value=0),
+    html.Br(),
+    html.Br(),
+    html.Hr(),
+    html.Div(id='output-container')
+])
+   ),
+   
    html.Hr(),
    dbc.Row([
        dbc.Col(grafica, md = 4, style = {'background-color' : 'red'}),
@@ -64,10 +76,18 @@ html.Hr(),
        html.Br(),
        html.Br(),
        html.Hr(),
-       html.Hr(),
    ]),
-   
+
+
 ])
+ 
+@app.callback(
+    Output('output-container', 'children'),
+    [Input('altura-input', 'value')]
+)
+def update_output(value):
+    return html.H3(f"La altura ingresada es: {value} m")
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
