@@ -5,7 +5,10 @@ import datetime
 
 from fronted.encabezado.logo import logo, nombre
 from fronted.foto.fot import picture
-from fronted.graficas.graf import grafica
+from fronted.INPUT.basetrapezoide import base
+from fronted.INPUT.caudal import caudalt
+from fronted.INPUT.talud import taludc
+
 
 # Estructura de datos para almacenar los datos ingresados
 datos_ingresados = []
@@ -26,15 +29,13 @@ app.layout = dbc.Container([
 
     html.Hr(),
 
+    dbc.Col([
+        dbc.Col(base),
+        dbc.Col(caudalt),
+        dbc.Col(taludc),
+    ]),
+
     html.Div([
-        html.H3("Introduzca la base del canal: "),
-        dcc.Input(id='base-input', type='number', value=0),
-        html.Br(),
-        html.H3("Introduzca el caudal del fluido: "),
-        dcc.Input(id='caudal-input', type='number', value=0),
-        html.Br(),
-        html.H3("Introduzca el talud del canal: "),
-        dcc.Input(id='talud-input', type='number', value=0),
         html.Br(),
         html.Button('Agregar', id='agregar-btn', n_clicks=0),  # Botón para agregar datos
         html.Hr(),

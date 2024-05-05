@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 app = dash.Dash(__name__, external_stylesheets= [dbc.themes.BOOTSTRAP])
 
 base = dbc.Container([   
-    html.H3("Introduzca la base del canal: "),
+    html.H2("Introduzca la base del canal: "),
     dcc.Input(id='base-input', type='number', value=0),
     html.Div(id='output-container')
 ])
