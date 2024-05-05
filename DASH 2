@@ -14,7 +14,7 @@ from fronted.INPUT.talud import taludc
 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-gunicorn=server = app.server
+server : app.server
 
 # Estructura de datos para almacenar los datos ingresados
 datos_ingresados = []
