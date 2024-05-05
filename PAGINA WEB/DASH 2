@@ -10,17 +10,18 @@ from fronted.INPUT.caudal import caudalt
 from fronted.INPUT.talud import taludc
 
 
+
+
+
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
+
 # Estructura de datos para almacenar los datos ingresados
 datos_ingresados = []
 
 #Se definen datos base
 gravedad = 9.81  
 y = 1.0  # Valor de y (altura crítica) para calcular la altura crítica inicialmente
-
-
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
-
-
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(html.H1("Sistema de Monitoreo de Fluido"), md=12),
