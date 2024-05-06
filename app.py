@@ -223,5 +223,5 @@ def limpiar_campos(n_clicks):
         raise dash.exceptions.PreventUpdate
 
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
+if __name__ == '_main_':
+    app.run_server(debug=True, host='0.0.0.0', port=8050)
